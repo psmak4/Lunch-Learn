@@ -89,13 +89,9 @@ namespace EntityFramework.Web.Areas.Admin.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult DeleteConfirmed(Guid id)
 		{
-			Tag tag = db.Tags.Find(id);
-			foreach (var post in tag.Posts.ToList())
-			{
-				tag.Posts.Remove(post);
-			}
-			db.Tags.Remove(tag);
-			db.SaveChanges();
+			db.Database.ExecuteSqlCommand($"delete from PostTags where TagId = '{id}'");
+			db.Database.ExecuteSqlCommand($"delete from Tags where Id = '{id}'");
+
 			return RedirectToAction("Index");
 		}
 

@@ -129,7 +129,8 @@
     <Compile Include="Areas\Admin\Controllers\TagsController.cs" />
     <Compile Include="Areas\Admin\ViewModels\Posts\CreateViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Posts\EditViewModel.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ArchivesController.cs" />
+    <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -162,6 +163,9 @@
       <DependentUpon>BlogEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Archives\IndexViewModel.cs" />
+    <Compile Include="ViewModels\Archives\PostsViewModel.cs" />
+    <Compile Include="ViewModels\Page\ArchivesViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\blog.css" />
@@ -220,9 +224,11 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Posts\LatestPosts.cshtml" />
+    <Content Include="Views\Page\LatestPosts.cshtml" />
     <Content Include="Views\Posts\Index.cshtml" />
+    <Content Include="Views\Archives\Index.cshtml" />
+    <Content Include="Views\Archives\Posts.cshtml" />
+    <Content Include="Views\Page\Archives.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />

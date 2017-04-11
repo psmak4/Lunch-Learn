@@ -1,0 +1,8 @@
+﻿@model EntityFramework.Web.ViewModels.Archives.PostsViewModel
+
+@{
+    ViewBag.Title = "Archives: " + Model.Title;
+}
+
+<h2>Archives: @Model.Title</h2>
+@Html.Partial("~/Views/Posts/Index.cshtml", Model.Posts)

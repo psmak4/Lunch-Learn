@@ -1,0 +1,10 @@
+﻿@model IEnumerable<EntityFramework.Web.ViewModels.Page.ArchivesViewModel>
+@using System.Globalization;
+
+<h4>Archives</h4>
+<ul>
+	@foreach (var item in Model)
+	{
+		<li>@Html.RouteLink(new DateTime(item.Year, item.Month, 1).ToString("MMMM yyyy", CultureInfo.InvariantCulture), "Archive Posts", new { year = item.Year, month = item.Month })</li>
+	}
+</ul>

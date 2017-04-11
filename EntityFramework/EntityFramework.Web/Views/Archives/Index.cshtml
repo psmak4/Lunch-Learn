@@ -1,0 +1,18 @@
+﻿@model IEnumerable<EntityFramework.Web.ViewModels.Archives.IndexViewModel>
+@using System.Globalization;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Archives</h2>
+
+@if (Model.Any())
+{
+	<ul>
+		@foreach (var item in Model)
+		{
+			<li>@Html.RouteLink(new DateTime(item.Year, item.Month, 1).ToString("MMMM yyyy", CultureInfo.InvariantCulture), "Archive Posts", new { year = item.Year, month = item.Month })</li>
+		}
+	</ul>
+}

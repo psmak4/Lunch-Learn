@@ -15,14 +15,6 @@ namespace EntityFramework.Web.Controllers
 			return View(model);
 		}
 
-		[ChildActionOnly]
-		public ActionResult LatestPosts()
-		{
-			var model = db.GetLatestPosts(3);
-
-			return PartialView(model);
-		}
-
 		protected override void Dispose(bool disposing)
 		{
 			if (disposing)
