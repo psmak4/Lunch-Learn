@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="EntityFramework.DatabaseModel.Comment" Width="1.5" PointX="6.25" PointY="0.625" IsExpanded="true" />
         <EntityTypeShape EntityType="EntityFramework.DatabaseModel.Post" Width="1.5" PointX="4" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="EntityFramework.DatabaseModel.FK_Comments_Posts" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="EntityFramework.DatabaseModel.Tag" Width="1.5" PointX="1.125" PointY="0.875" />
+        <EntityTypeShape EntityType="EntityFramework.DatabaseModel.Tag" Width="1.5" PointX="1.125" PointY="0.75" />
         <AssociationConnector Association="EntityFramework.DatabaseModel.PostTags" />
       </Diagram>
     </edmx:Diagrams>

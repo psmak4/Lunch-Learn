@@ -25,8 +25,6 @@
           <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'EntityFramework.Database.dbo.PostTags' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="PostTags">
           <Key>
             <PropertyRef Name="PostId" />
@@ -84,13 +82,8 @@ warning 6002: The table/view 'EntityFramework.Database.dbo.PostTags' does not ha
         <EntityContainer Name="EntityFrameworkDatabaseModelStoreContainer">
           <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Posts" EntityType="Self.Posts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PostTags" EntityType="Self.PostTags" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tags" EntityType="Self.Tags" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PostTags" EntityType="Self.PostTags" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [PostTags].[PostId] AS [PostId], 
-    [PostTags].[TagId] AS [TagId]
-    FROM [dbo].[PostTags] AS [PostTags]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_Comments_Posts" Association="Self.FK_Comments_Posts">
             <End Role="Posts" EntitySet="Posts" />
             <End Role="Comments" EntitySet="Comments" />
@@ -231,7 +224,7 @@ warning 6002: The table/view 'EntityFramework.Database.dbo.PostTags' does not ha
               <ScalarProperty Name="Id" ColumnName="PostId" />
             </EndProperty>
           </AssociationSetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

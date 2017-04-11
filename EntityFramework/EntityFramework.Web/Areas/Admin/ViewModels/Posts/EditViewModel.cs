@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
@@ -22,5 +23,9 @@ namespace EntityFramework.Web.Areas.Admin.ViewModels.Posts
 		[Required]
 		[DataType(DataType.DateTime)]
 		public DateTime Date { get; set; }
+
+		public IEnumerable<Guid> Tags { get; set; }
+
+		public MultiSelectList TagOptions { get; set; }
 	}
 }

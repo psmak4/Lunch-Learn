@@ -37,6 +37,7 @@ namespace EntityFramework.Web.Areas.Admin.Controllers
 		{
 			var model = new CreateViewModel();
 			model.Date = DateTime.Now;
+			model.TagOptions = new MultiSelectList(db.Tags.AsEnumerable(), "Id", "Name");
 
 			return View(model);
 		}
@@ -53,6 +54,10 @@ namespace EntityFramework.Web.Areas.Admin.Controllers
 				post.Title = model.Title;
 				post.Content = model.Content;
 				post.Date = model.Date;
+				foreach (var tagId in model.Tags)
+				{
+					post.Tags.Add(db.Tags.Find(tagId));
+				}
 				db.Posts.Add(post);
 				db.SaveChanges();
 				return RedirectToAction("Index");
@@ -68,6 +73,7 @@ namespace EntityFramework.Web.Areas.Admin.Controllers
 			{
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			}
+
 			Post post = db.Posts.Find(id);
 			if (post == null)
 			{
@@ -79,6 +85,8 @@ namespace EntityFramework.Web.Areas.Admin.Controllers
 			model.Title = post.Title;
 			model.Content = post.Content;
 			model.Date = post.Date;
+			model.Tags = post.Tags.Select(t => t.Id);
+			model.TagOptions = new MultiSelectList(db.Tags.AsEnumerable(), "Id", "Name");
 
 			return View(model);
 		}
@@ -98,6 +106,14 @@ namespace EntityFramework.Web.Areas.Admin.Controllers
 				post.Title = model.Title;
 				post.Content = model.Content;
 				post.Date = model.Date;
+				foreach(var tag in post.Tags.ToList())
+				{
+					post.Tags.Remove(tag);
+				}
+				foreach(var tagId in model.Tags)
+				{
+					post.Tags.Add(db.Tags.Find(tagId));
+				}
 				db.SaveChanges();
 
 				return RedirectToAction("Index");
@@ -127,6 +143,10 @@ namespace EntityFramework.Web.Areas.Admin.Controllers
 		public ActionResult DeleteConfirmed(Guid id)
 		{
 			Post post = db.Posts.Find(id);
+			foreach (var tag in post.Tags.ToList())
+			{
+				post.Tags.Remove(tag);
+			}
 			db.Posts.Remove(post);
 			db.SaveChanges();
 			return RedirectToAction("Index");

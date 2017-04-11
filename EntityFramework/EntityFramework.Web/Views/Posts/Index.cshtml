@@ -8,7 +8,16 @@
 {
 	<div class="blog-post">
 		<h2 class="blog-post-title">@post.Title</h2>
-		<p class="blog-post-meta">@post.Date.ToShortDateString()</p>
+		<p class="blog-post-meta">
+			@post.Date.ToShortDateString()
+			@if (post.Tags.Any())
+			{
+				<br />
+				<span class="small text-muted">
+					tags: @string.Join(", ", post.Tags.Select(t => t.Name.ToLower()))
+				</span>
+			}
+		</p>
 		@Html.Raw(post.Content)
 	</div>
 }

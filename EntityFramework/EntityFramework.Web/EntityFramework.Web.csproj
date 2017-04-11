@@ -126,6 +126,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\PostsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TagsController.cs" />
     <Compile Include="Areas\Admin\ViewModels\Posts\CreateViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Posts\EditViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -157,6 +158,9 @@
     <Compile Include="Models\Post.cs">
       <DependentUpon>BlogEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Tag.cs">
+      <DependentUpon>BlogEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +185,10 @@
     <Content Include="Areas\Admin\Views\Posts\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Posts\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Posts\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Tags\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Tags\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Tags\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Tags\Index.cshtml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Models\BlogEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
