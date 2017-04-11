@@ -37,6 +37,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="GetLatestPosts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="numPosts" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="EntityFrameworkDatabaseModelStoreContainer">
           <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Posts" EntityType="Self.Posts" Schema="dbo" store:Type="Tables" />
@@ -90,7 +93,16 @@
             <End Role="Posts" EntitySet="Posts" />
             <End Role="Comments" EntitySet="Comments" />
           </AssociationSet>
+          <FunctionImport Name="GetLatestPosts" ReturnType="Collection(EntityFramework.DatabaseModel.GetLatestPosts_Result)">
+            <Parameter Name="numPosts" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="GetLatestPosts_Result">
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Content" Nullable="false" />
+          <Property Type="DateTime" Name="Date" Nullable="false" Precision="23" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -119,6 +131,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetLatestPosts" FunctionName="EntityFramework.DatabaseModel.Store.GetLatestPosts">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EntityFramework.DatabaseModel.GetLatestPosts_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -12,6 +12,8 @@ namespace EntityFramework.Web.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class BlogEntities : DbContext
     {
@@ -27,5 +29,16 @@ namespace EntityFramework.Web.Models
     
         public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<Post> Posts { get; set; }
-    }
+    
+        public virtual ObjectResult<GetLatestPosts_Result> GetLatestPosts(Nullable<int> numPosts)
+        {
+            var numPostsParameter = numPosts.HasValue ?
+                new ObjectParameter("numPosts", numPosts) :
+                new ObjectParameter("numPosts", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetLatestPosts_Result>("GetLatestPosts", numPostsParameter);
+        }
+
+		public System.Data.Entity.DbSet<EntityFramework.Web.Models.GetLatestPosts_Result> GetLatestPosts_Result { get; set; }
+	}
 }

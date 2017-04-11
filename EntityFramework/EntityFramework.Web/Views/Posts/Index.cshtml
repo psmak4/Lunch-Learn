@@ -1,0 +1,14 @@
+﻿@model IEnumerable<EntityFramework.Web.Models.Post>
+
+@{
+    ViewBag.Title = "Home";
+}
+
+@foreach (var post in Model)
+{
+	<div class="blog-post">
+		<h2 class="blog-post-title">@post.Title</h2>
+		<p class="blog-post-meta">@post.Date.ToShortDateString()</p>
+		@Html.Raw(post.Content)
+	</div>
+}

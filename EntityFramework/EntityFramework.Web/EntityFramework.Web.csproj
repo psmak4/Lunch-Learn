@@ -129,6 +129,7 @@
     <Compile Include="Areas\Admin\ViewModels\Posts\CreateViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Posts\EditViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -148,6 +149,9 @@
       <DependentUpon>BlogEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Comment.cs">
+      <DependentUpon>BlogEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetLatestPosts_Result.cs">
       <DependentUpon>BlogEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Post.cs">
@@ -209,6 +213,8 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Posts\LatestPosts.cshtml" />
+    <Content Include="Views\Posts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
