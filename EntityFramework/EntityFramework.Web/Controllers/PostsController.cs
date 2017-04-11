@@ -22,5 +22,14 @@ namespace EntityFramework.Web.Controllers
 
 			return PartialView(model);
 		}
+
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing)
+			{
+				db.Dispose();
+			}
+			base.Dispose(disposing);
+		}
 	}
 }
