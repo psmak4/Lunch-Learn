@@ -29,6 +29,7 @@ namespace EntityFramework.Web.Models
     
         public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<Post> Posts { get; set; }
+        public virtual DbSet<Tag> Tags { get; set; }
     
         public virtual ObjectResult<GetLatestPosts_Result> GetLatestPosts(Nullable<int> numPosts)
         {
@@ -38,7 +39,5 @@ namespace EntityFramework.Web.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetLatestPosts_Result>("GetLatestPosts", numPostsParameter);
         }
-
-		public System.Data.Entity.DbSet<EntityFramework.Web.Models.GetLatestPosts_Result> GetLatestPosts_Result { get; set; }
-	}
+    }
 }
