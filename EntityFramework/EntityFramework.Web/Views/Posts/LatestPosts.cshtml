@@ -1,9 +1,9 @@
 ﻿@model IEnumerable<EntityFramework.Web.Models.GetLatestPosts_Result>
 
 <h4>Latest Posts</h4>
-<ol class="list-unstyled">
+<ul>
 	@foreach (var post in Model)
 	{
 		<li><a href="#">@post.Title</a></li>
 	}
-</ol>
+</ul>
