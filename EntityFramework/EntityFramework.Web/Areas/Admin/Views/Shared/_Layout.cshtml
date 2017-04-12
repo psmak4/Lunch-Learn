@@ -32,7 +32,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - EF Demo Admin</p>
+            <p>&copy; @DateTime.Now.Year - EF Demo Admin | <a href="@Url.Action("Index", "Posts", new { area = "" })">View Site</a></p>
         </footer>
     </div>
 
