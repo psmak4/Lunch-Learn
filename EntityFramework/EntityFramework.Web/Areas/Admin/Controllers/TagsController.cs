@@ -15,7 +15,15 @@ namespace EntityFramework.Web.Areas.Admin.Controllers
 		// GET: Admin/Tags
 		public ActionResult Index()
 		{
-			return View(db.Tags.OrderBy(t => t.Name).AsEnumerable());
+			// Works fine, but you lose lazy loading
+			//var model = db.Database.SqlQuery<Tag>("select t.* from Tags t order by t.Name").AsEnumerable();
+
+			// Can also use Linq to query EF context
+			//var model = (from t in db.Tags orderby t.Name select t).AsEnumerable();
+
+			var model = db.Tags.OrderBy(t => t.Name).AsEnumerable();
+
+			return View(model);
 		}
 
 		// GET: Admin/Tags/Create
